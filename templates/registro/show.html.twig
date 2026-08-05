@@ -23,7 +23,7 @@
                         </p>
                         <p class="card-text">
                             Núm. de teléfono: {{ registro.telefono }}<br>
-                            Contacto de emergencia: {{ registro.contacto }}, {{ registro.contactotel }}
+                            Contacto de emergencia: {{ registro.contacto }}, <small><em>{{ registro.contactotel }}</em></small>
                         </p>
 
                         <p class="card-text">
@@ -42,7 +42,8 @@
                     <div class="card-body text-dark">
                         <h5 class="card-title">{{ registro.procedencia }} </h5>
                         <p class="card-text">
-                            {{ registro.carrera }}, {{ registro.semestre ~ " (semestre o cuatrimestre)" }}, {{ registro.porcentaje ~ "% de avance"  }}, promedio {{ registro.promedio }}
+                            {{ registro.carrera }}, {{ registro.programa }}, {{ registro.semestre ~ " (semestre o cuatrimestre)" }},
+                            {{ registro.porcentaje ~ "% de avance"  }}, {{ registro.porcentajetesis ~ "% de avance en tesis"  }}, promedio {{ registro.promedio }}
                         </p>
                         <p class="card-text">
                             Recomendado por <strong>{{ registro.profesor }}</strong>, <small><em>{{ registro.mailprofesor }}</em></small><br>

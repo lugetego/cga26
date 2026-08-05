@@ -66,11 +66,11 @@ class Registro
     private $mail;
 
     /**
-     * @ORM\Column(type="string", length=20)
-     * @Assert\NotBlank()
+     * @ORM\Column(type="string", length=10)
+     * @Assert\NotBlank(message="El número de teléfono es obligatorio.")
      * @Assert\Regex(
-     *     pattern="/^\+?[0-9\s\-\(\)]{10,20}$/",
-     *     message="El número de teléfono no es válido."
+     *     pattern="/^[0-9]{10}$/",
+     *     message="El número de teléfono debe contener exactamente 10 dígitos."
      * )
      */
     private $telefono;
@@ -82,11 +82,11 @@ class Registro
     private $contacto;
 
     /**
-     * @ORM\Column(type="string", length=20)
-     * @Assert\NotBlank()
+     * @ORM\Column(type="string", length=10)
+     * @Assert\NotBlank(message="El número de teléfono es obligatorio.")
      * @Assert\Regex(
-     *     pattern="/^\+?[0-9\s\-\(\)]{10,20}$/",
-     *     message="El número de teléfono no es válido."
+     *     pattern="/^[0-9]{10}$/",
+     *     message="El número de teléfono debe contener exactamente 10 dígitos."
      * )
      */
     private $contactotel;

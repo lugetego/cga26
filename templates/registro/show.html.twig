@@ -22,6 +22,11 @@
                             {{ registro.nacimiento |format_date('long',locale='es') }}, <small><em> {{ registro.sexo }}, {{ edad }} años</em></small>
                         </p>
                         <p class="card-text">
+                            Núm. de teléfono: {{ registro.telefono }}<br>
+                            Contacto de emergencia: {{ registro.contacto }}, {{ registro.contactotel }}
+                        </p>
+
+                        <p class="card-text">
                             {% if registro.credencialName != null %}
                                 <a href="{{ vich_uploader_asset(registro, 'credencialFile') }}"  target="_blank" > <span class="badge rounded-pill bg-primary"><i class="fa-regular fa-file-pdf"></i> Credencial</span></a>
                             {% else %}

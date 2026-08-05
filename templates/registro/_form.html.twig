@@ -148,7 +148,7 @@
                     class: 'form-floating'
                 }
             }) }}
-            {{ form_errors(form.telefono) }}
+{{ dump(form.telefono.vars.errors) }}
         </div>
     </div>
     <div class="row pt-2">

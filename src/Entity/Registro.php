@@ -66,10 +66,42 @@ class Registro
     private $mail;
 
     /**
+     * @ORM\Column(type="string", length=20)
+     * @Assert\NotBlank()
+     * @Assert\Regex(
+     *     pattern="/^\+?[0-9\s\-\(\)]{10,20}$/",
+     *     message="El número de teléfono no es válido."
+     * )
+     */
+    private $telefono;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
+     */
+    private $contacto;
+
+    /**
+     * @ORM\Column(type="string", length=20)
+     * @Assert\NotBlank()
+     * @Assert\Regex(
+     *     pattern="/^\+?[0-9\s\-\(\)]{10,20}$/",
+     *     message="El número de teléfono no es válido."
+     * )
+     */
+    private $contactotel;
+
+    /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank()
      */
     private $procedencia;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
+     */
+    private $programa;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -88,6 +120,12 @@ class Registro
      * @Assert\NotBlank()
      */
     private $porcentaje;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
+     */
+    private $porcentajetesis;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -129,16 +167,6 @@ class Registro
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $beca;
-
-    /**
-     * @ORM\Column(type="string", length=500, nullable=true)
-     */
-    private $curso1;
-
-    /**
-     * @ORM\Column(type="string", length=500, nullable=true)
-     */
-    private $curso2;
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
@@ -317,6 +345,54 @@ class Registro
         return $this;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getTelefono()
+    {
+        return $this->telefono;
+    }
+
+    /**
+     * @param mixed $telefono
+     */
+    public function setTelefono($telefono): void
+    {
+        $this->telefono = $telefono;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getContacto()
+    {
+        return $this->contacto;
+    }
+
+    /**
+     * @param mixed $contacto
+     */
+    public function setContacto($contacto): void
+    {
+        $this->contacto = $contacto;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getContactotel()
+    {
+        return $this->contactotel;
+    }
+
+    /**
+     * @param mixed $contactotel
+     */
+    public function setContactotel($contactotel): void
+    {
+        $this->contactotel = $contactotel;
+    }
+
     public function getProcedencia(): ?string
     {
         return $this->procedencia;
@@ -327,6 +403,22 @@ class Registro
         $this->procedencia = $procedencia;
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPrograma()
+    {
+        return $this->programa;
+    }
+
+    /**
+     * @param mixed $programa
+     */
+    public function setPrograma($programa): void
+    {
+        $this->programa = $programa;
     }
 
     public function getCarrera(): ?string
@@ -363,6 +455,22 @@ class Registro
         $this->porcentaje = $porcentaje;
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPorcentajetesis()
+    {
+        return $this->porcentajetesis;
+    }
+
+    /**
+     * @param mixed $porcentajetesis
+     */
+    public function setPorcentajetesis($porcentajetesis): void
+    {
+        $this->porcentajetesis = $porcentajetesis;
     }
 
     public function getProfesor(): ?string
@@ -657,36 +765,5 @@ class Registro
         $this->setModified(new \DateTime());
     }
 
-    /**
-     * @return mixed
-     */
-    public function getCurso1()
-    {
-        return $this->curso1;
-    }
-
-    /**
-     * @param mixed $curso1
-     */
-    public function setCurso1($curso1): void
-    {
-        $this->curso1 = $curso1;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCurso2()
-    {
-        return $this->curso2;
-    }
-
-    /**
-     * @param mixed $curso2
-     */
-    public function setCurso2($curso2): void
-    {
-        $this->curso2 = $curso2;
-    }
 
 }

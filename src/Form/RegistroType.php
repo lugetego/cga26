@@ -35,11 +35,34 @@ class RegistroType extends AbstractType
                'invalid_message' => 'Los correos no son iguales',
                'first_options'  => ['label' => 'Correo'],
                'second_options' => ['label' => 'Confirma correo']])
+            ->add('telefono')
+            ->add('contacto')
+            ->add('contactotel')
             ->add('procedencia')
             ->add('carrera')
+            ->add('programa',ChoiceType::class, [
+                'choices'  => [
+                    'Licenciatura'=>'Licenciatura',
+                    'Maestría'=>'Maestría',
+                    'Doctorado'=>'Doctorado',
+                ],
+                'placeholder' => 'Seleccionar',
+            ])
             ->add('semestre')
             ->add('porcentaje',ChoiceType::class, [
                 'choices'  => [
+                    '50'=>'50',
+                    '60'=>'60',
+                    '70'=>'70',
+                    '80'=>'80',
+                    '90'=>'90',
+                    '100'=>'100'
+                ],
+                'placeholder' => 'Seleccionar',
+            ])
+            ->add('porcentajetesis',ChoiceType::class, [
+                'choices'  => [
+                    'No aplica'=>'No aplica',
                     '50'=>'50',
                     '60'=>'60',
                     '70'=>'70',
@@ -92,22 +115,6 @@ class RegistroType extends AbstractType
                     'Solamente alimentación' => 'Solamente alimentación',
                     'Solamente hospedaje' => 'Solamente hospedaje',
                     'Hospedaje y alimentación' => 'Hospedaje y alimentación',
-                ],
-                'placeholder' => 'Seleccionar',
-            ])
-            ->add('curso1',ChoiceType::class, [
-                'choices'  => [
-                    'C3-Grupos, acciones y geometría' => 'C3',
-                    'C4-Cuerpos de Ancho Constante: Construcciones clásicas y fronteras recientes' => 'C4',
-
-                ],
-                'placeholder' => 'Seleccionar',
-            ])
-            ->add('curso2',ChoiceType::class, [
-                'choices'  => [
-                    'C5-Curvas en el espacio proyectivo'=>'C5',
-                    'C6-Análisis masivo de datos metagenómicos' => 'C6',
-
                 ],
                 'placeholder' => 'Seleccionar',
             ])

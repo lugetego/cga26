@@ -310,36 +310,80 @@
 
             </div>
         </div>
-            <div class="col-8">
-                <div class="card border-dark mt-3" style="max-width: 100%">
-                    <div class="card-header">Información de control</div>
-                    <div class="card-body text-dark">
-                        <p class="card-text">
-                        <address>
-                            <span class="badge rounded-pill bg-light text-dark">Registro realizado: {{ registro.created |format_date('long',locale='es')}} </span>
-                            <span class="badge rounded-pill bg-light text-dark">Registro modificado: {{ registro.modified |format_date('long',locale='es')}}</span>
-                            <hr>
-                            {% if registro.comentarios != null %}
-                                <p> {{registro.comentarios}} </p>
-                            {% else %}
-                                <p>  <span class="badge rounded-pill bg-warning text-dark">No tiene comentarios</span></p>
-                            {% endif %}
-                            <div {{ stimulus_controller('modal-form', {
-                                formUrl: path('app_registro_evaluacion',{'slug':registro.slug})
-                            }) }}>
-                                <button
-                                        class="btn btn-primary btn-sm"
-                                        data-action="modal-form#openModal"
-                                >Evaluar registro</button>
-                                {{ include('registro/_modal.html.twig', {
-                                    modalTitle: 'Evaluar registro',
-                                }) }}
-                            </div>
-                        </address>
-                        </p>
-                    </div>
+        <div class="col-lg-8">
+            <div class="card border-dark shadow-sm mt-3">
+
+                <div class="card-header bg-dark text-white">
+                    <i class="bi bi-clipboard-data-fill me-2"></i>
+                    Información de control
                 </div>
+
+                <div class="card-body">
+
+                    <div class="row g-3 mb-4">
+
+                        <div class="col-md-6">
+                            <small class="text-muted d-block">Fecha de registro</small>
+                            <span class="badge bg-light text-dark border">
+                        <i class="bi bi-calendar-plus me-1"></i>
+                        {{ registro.created|format_date('long', locale='es') }}
+                    </span>
+                        </div>
+
+                        <div class="col-md-6">
+                            <small class="text-muted d-block">Última modificación</small>
+                            <span class="badge bg-light text-dark border">
+                        <i class="bi bi-pencil-square me-1"></i>
+                        {{ registro.modified|format_date('long', locale='es') }}
+                    </span>
+                        </div>
+
+                    </div>
+
+                    <hr>
+
+                    <h6 class="text-muted mb-3">
+                        <i class="bi bi-chat-left-text-fill me-2"></i>
+                        Comentarios del evaluador
+                    </h6>
+
+                    {% if registro.comentarios %}
+                        <div class="alert alert-light border">
+                            {{ registro.comentarios|nl2br }}
+                        </div>
+                    {% else %}
+                        <div class="alert alert-warning mb-3">
+                            <i class="bi bi-exclamation-circle me-2"></i>
+                            No hay comentarios registrados.
+                        </div>
+                    {% endif %}
+
+                    <div class="d-flex justify-content-end">
+
+                        <div {{ stimulus_controller('modal-form', {
+                            formUrl: path('app_registro_evaluacion', {'slug': registro.slug})
+                        }) }}>
+
+                            <button
+                                    type="button"
+                                    class="btn btn-primary"
+                                    data-action="modal-form#openModal">
+                                <i class="bi bi-pencil-square me-2"></i>
+                                Evaluar registro
+                            </button>
+
+                            {{ include('registro/_modal.html.twig', {
+                                modalTitle: 'Evaluar registro'
+                            }) }}
+
+                        </div>
+
+                    </div>
+
+                </div>
+
             </div>
+        </div>
         </div>
     </div>
 {% endblock %}

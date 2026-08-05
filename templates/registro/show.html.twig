@@ -11,30 +11,87 @@
             </ol>
         </nav>
         <div class="row">
-            <div class="col-8">
-                <div class="card border-dark mt-3" style="max-width: 100%">
-                    <div class="card-header">Información personal</div>
-                    <div class="card-body text-dark">
-                        <h5 class="card-title">{{ registro.nombre }} {{ registro.paterno }} {{ registro.materno }} </h5>
-                        <p class="card-text">
-                            <strong> {{ registro.mail }} </strong> <br>
-                            {% set edad = date().diff(date(registro.nacimiento)).y %}
-                            {{ registro.nacimiento |format_date('long',locale='es') }}, <small><em> {{ registro.sexo }}, {{ edad }} años</em></small>
-                        </p>
-                        <p class="card-text">
-                            Núm. de teléfono: {{ registro.telefono }}<br>
-                            Contacto de emergencia: {{ registro.contacto }}, <small><em>{{ registro.contactotel }}</em></small>
-                        </p>
+            <div class="col-lg-8">
+                <div class="card border-dark shadow-sm mt-3 h-100">
+                    <div class="card-header bg-dark text-white">
+                        <i class="bi bi-person-vcard-fill me-2"></i>
+                        Información personal
+                    </div>
 
-                        <p class="card-text">
-                            {% if registro.credencialName != null %}
-                                <a href="{{ vich_uploader_asset(registro, 'credencialFile') }}"  target="_blank" > <span class="badge rounded-pill bg-primary"><i class="fa-regular fa-file-pdf"></i> Credencial</span></a>
-                            {% else %}
-                                <span class="badge rounded-pill bg-warning text-dark">Sin credencial</span>
-                            {% endif %}
-                        </p>
+                    <div class="card-body">
+
+                        <h4 class="card-title mb-3">
+                            {{ registro.nombre }} {{ registro.paterno }} {{ registro.materno }}
+                        </h4>
+
+                        {% set edad = date().diff(date(registro.nacimiento)).y %}
+
+                        <ul class="list-group list-group-flush">
+
+                            <li class="list-group-item">
+                                <i class="bi bi-envelope-fill text-primary me-2"></i>
+                                <a href="mailto:{{ registro.mail }}" class="text-decoration-none">
+                                    {{ registro.mail }}
+                                </a>
+                            </li>
+
+                            <li class="list-group-item">
+                                <i class="bi bi-calendar-event-fill text-primary me-2"></i>
+                                <strong>Fecha de nacimiento:</strong>
+                                {{ registro.nacimiento|format_date('long', locale='es') }}
+                            </li>
+
+                            <li class="list-group-item d-flex justify-content-between flex-wrap">
+                    <span>
+                        <i class="bi bi-person-fill text-primary me-2"></i>
+                        <strong>Sexo:</strong> {{ registro.sexo }}
+                    </span>
+
+                                <span class="badge bg-secondary">
+                        {{ edad }} años
+                    </span>
+                            </li>
+
+                            <li class="list-group-item">
+                                <i class="bi bi-telephone-fill text-primary me-2"></i>
+                                <strong>Teléfono:</strong>
+                                <a href="tel:{{ registro.telefono }}" class="text-decoration-none">
+                                    {{ registro.telefono }}
+                                </a>
+                            </li>
+
+                            <li class="list-group-item">
+                                <i class="bi bi-person-heart text-danger me-2"></i>
+                                <strong>Contacto de emergencia:</strong><br>
+
+                                <span>{{ registro.contacto }}</span><br>
+
+                                <a href="tel:{{ registro.contactotel }}" class="text-decoration-none">
+                                    {{ registro.contactotel }}
+                                </a>
+                            </li>
+
+                            <li class="list-group-item">
+                                <strong>Credencial:</strong>
+
+                                {% if registro.credencialName %}
+                                    <a href="{{ vich_uploader_asset(registro, 'credencialFile') }}" target="_blank"
+                                       class="btn btn-sm btn-outline-primary ms-2">
+                                        <i class="fa-regular fa-file-pdf"></i>
+                                        Ver credencial
+                                    </a>
+                                {% else %}
+                                    <span class="badge bg-warning text-dark ms-2">
+                            Sin credencial
+                        </span>
+                                {% endif %}
+                            </li>
+
+                        </ul>
+
                     </div>
                 </div>
+            </div>
             </div>
             <div class="col-8">
                 <div class="card border-dark mt-3" style="max-width: 100%">

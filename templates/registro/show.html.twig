@@ -221,23 +221,95 @@
 
             </div>
         </div>
-            <div class="col-8">
-                <div class="card border-dark mt-3" style="max-width: 100%">
-                    <div class="card-header">{{ evento }}</div>
-                    <div class="card-body text-dark">
-                        <p> Requiere beca de <strong>{{ registro.beca }}</strong></p>
-                        <p class="card-text">Restricciones de alimentación: <em>"{{ registro.restricciones }}"</em> </p>
+        <div class="col-lg-8">
+            <div class="card border-dark shadow-sm mt-3">
 
-                        <p class="card-text">Razones por la que quiere asistir: <em>"{{ registro.razones }}"</em>
-                        </p>
-
-                        <p>
-                            {{ registro.aceptado ? '<span class="badge rounded-pill bg-success">Participante aceptado</span>' : '<span class="badge rounded-pill bg-danger">Participante no aceptado</span>' }}
-                            {{ registro.confirmado ? '<span class="badge rounded-pill bg-success">Participante confirmado</span>' : '<span class="badge rounded-pill bg-warning text-dark">Participante no confirmado</span>' }}
-                        </p>
-                    </div>
+                <div class="card-header bg-dark text-white">
+                    <i class="bi bi-calendar-event-fill me-2"></i>
+                    {{ evento }}
                 </div>
+
+                <div class="card-body">
+
+                    <div class="mb-4">
+                        <h6 class="text-muted mb-2">Beca solicitada</h6>
+
+                        {% if registro.beca %}
+                            <span class="badge bg-primary fs-6">
+                        {{ registro.beca }}
+                    </span>
+                        {% else %}
+                            <span class="badge bg-secondary">
+                        No requiere beca
+                    </span>
+                        {% endif %}
+                    </div>
+
+                    <div class="mb-4">
+                        <h6 class="text-muted">
+                            <i class="bi bi-cup-hot-fill me-2"></i>
+                            Restricciones de alimentación
+                        </h6>
+
+                        {% if registro.restricciones %}
+                            <div class="alert alert-light border mb-0">
+                                {{ registro.restricciones|nl2br }}
+                            </div>
+                        {% else %}
+                            <span class="text-muted">Sin restricciones reportadas.</span>
+                        {% endif %}
+                    </div>
+
+                    <div class="mb-4">
+                        <h6 class="text-muted">
+                            <i class="bi bi-chat-left-text-fill me-2"></i>
+                            Motivos para asistir
+                        </h6>
+
+                        <div class="alert alert-light border mb-0">
+                            {{ registro.razones|nl2br }}
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <h6 class="text-muted mb-3">
+                        <i class="bi bi-clipboard-check-fill me-2"></i>
+                        Estado de la solicitud
+                    </h6>
+
+                    <div class="d-flex flex-wrap gap-2">
+
+                        {% if registro.aceptado %}
+                            <span class="badge bg-success fs-6">
+                        <i class="bi bi-check-circle-fill me-1"></i>
+                        Participante aceptado
+                    </span>
+                        {% else %}
+                            <span class="badge bg-danger fs-6">
+                        <i class="bi bi-x-circle-fill me-1"></i>
+                        Participante no aceptado
+                    </span>
+                        {% endif %}
+
+                        {% if registro.confirmado %}
+                            <span class="badge bg-success fs-6">
+                        <i class="bi bi-person-check-fill me-1"></i>
+                        Participante confirmado
+                    </span>
+                        {% else %}
+                            <span class="badge bg-warning text-dark fs-6">
+                        <i class="bi bi-hourglass-split me-1"></i>
+                        Participante no confirmado
+                    </span>
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
             </div>
+        </div>
             <div class="col-8">
                 <div class="card border-dark mt-3" style="max-width: 100%">
                     <div class="card-header">Información de control</div>

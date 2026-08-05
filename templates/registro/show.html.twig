@@ -77,6 +77,13 @@
                         </div>
                         </p>
                         <p class="card-text">
+                            {% if registro.caliName != null %}
+                                <a href="{{ vich_uploader_asset(registro, 'caliFile') }}"  target="_blank" > <span class="badge rounded-pill bg-primary"><i class="fa-regular fa-file-pdf"></i> Memorándum/Constancia</span></a>
+                            {% else %}
+                                <span class="badge rounded-pill bg-warning text-dark">Sin archivo</span>
+                            {% endif %}
+                        </p>
+                        <p class="card-text">
                         <h6 class="text-muted mb-3">
                             <i class="bi bi-person-check-fill me-2"></i>Recomendación académica
                         </h6>
@@ -107,13 +114,7 @@
                                 <span class="badge rounded-pill bg-warning text-dark">Sin recomendación</span>
                             {% endif %}
                         </p>
-                        <p class="card-text">
-                            {% if registro.caliName != null %}
-                                <a href="{{ vich_uploader_asset(registro, 'caliFile') }}"  target="_blank" > <span class="badge rounded-pill bg-primary"><i class="fa-regular fa-file-pdf"></i> Memorándum/Constancia</span></a>
-                            {% else %}
-                                <span class="badge rounded-pill bg-warning text-dark">Sin archivo</span>
-                            {% endif %}
-                        </p>
+
                     </div>
                 </div>
             </div>

@@ -42,8 +42,39 @@
                     <div class="card-body text-dark">
                         <h5 class="card-title">{{ registro.procedencia }} </h5>
                         <p class="card-text">
-                            {{ registro.carrera }}, {{ registro.programa }}, {{ registro.semestre ~ " (semestre o cuatrimestre)" }},
-                            {{ registro.porcentaje ~ "% de avance"  }}, {{ registro.porcentajetesis ~ "% de avance en tesis"  }}, promedio {{ registro.promedio }}
+                        <ul class="list-group list-group-flush">
+
+                            <li class="list-group-item">
+                                <i class="bi bi-mortarboard-fill me-2"></i>
+                                <strong>Carrera:</strong> {{ registro.carrera }}
+                            </li>
+
+                            <li class="list-group-item">
+                                <i class="bi bi-book-fill me-2"></i>
+                                <strong>Programa:</strong> {{ registro.programa }}
+                            </li>
+
+                            <li class="list-group-item">
+                                <i class="bi bi-calendar3 me-2"></i>
+                                <strong>Semestre/Cuatrimestre:</strong> {{ registro.semestre }}
+                            </li>
+
+                            <li class="list-group-item d-flex justify-content-between">
+                                <span>Avance del programa</span>
+                                <span class="badge bg-primary rounded-pill">{{ registro.porcentaje }}%</span>
+                            </li>
+
+                            <li class="list-group-item d-flex justify-content-between">
+                                <span>Avance de tesis</span>
+                                <span class="badge bg-info text-dark rounded-pill">{{ registro.porcentajetesis }}%</span>
+                            </li>
+
+                            <li class="list-group-item d-flex justify-content-between">
+                                <span>Promedio</span>
+                                <span class="badge bg-success rounded-pill">{{ registro.promedio }}</span>
+                            </li>
+
+                        </ul>
                         </p>
                         <p class="card-text">
                             Recomendado por <strong>{{ registro.profesor }}</strong>, <small><em>{{ registro.mailprofesor }}</em></small><br>

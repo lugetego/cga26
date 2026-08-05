@@ -93,88 +93,134 @@
                 </div>
             </div>
             </div>
-            <div class="col-8">
-                <div class="card border-dark mt-3" style="max-width: 100%">
-                    <div class="card-header">Información académica</div>
-                    <div class="card-body text-dark">
-                        <h5 class="card-title">{{ registro.procedencia }} </h5>
-                        <p class="card-text">
-                        <div class="row g-2 small">
+        <div class="col-lg-8">
+            <div class="card border-dark shadow-sm mt-3">
 
-                            <div class="col-md-6">
-                                <strong>Carrera:</strong><br>
-                                {{ registro.carrera }}
-                            </div>
+                <div class="card-header bg-dark text-white">
+                    <i class="bi bi-mortarboard-fill me-2"></i>
+                    Información académica
+                </div>
 
-                            <div class="col-md-6">
-                                <strong>Programa:</strong><br>
-                                {{ registro.programa }}
-                            </div>
+                <div class="card-body">
 
-                            <div class="col-md-4">
-                                <strong>Semestre/Cuatrimestre</strong><br>
-                                <span class="badge bg-secondary">{{ registro.semestre }}</span>
-                            </div>
+                    <h4 class="card-title mb-4">
+                        {{ registro.procedencia }}
+                    </h4>
 
-                            <div class="col-md-4">
-                                <strong>Avance del programa</strong><br>
-                                <span class="badge bg-primary">{{ registro.porcentaje }} %</span>
-                            </div>
+                    <div class="row g-3">
 
-                            <div class="col-md-4">
-                                <strong>Avance de tesis</strong><br>
-                                <span class="badge bg-info text-dark">{{ registro.porcentajetesis }} %</span>
-                            </div>
-
-                            <div class="col-md-4">
-                                <strong>Promedio</strong><br>
-                                <span class="badge bg-success">{{ registro.promedio }}</span>
-                            </div>
-
-                        </div>
-                        </p>
-                        <p class="card-text">
-                            {% if registro.caliName != null %}
-                                <a href="{{ vich_uploader_asset(registro, 'caliFile') }}"  target="_blank" > <span class="badge rounded-pill bg-primary"><i class="fa-regular fa-file-pdf"></i> Memorándum/Constancia</span></a>
-                            {% else %}
-                                <span class="badge rounded-pill bg-warning text-dark">Sin archivo</span>
-                            {% endif %}
-                        </p>
-                        <p class="card-text">
-                        <h6 class="text-muted mb-3">
-                            <i class="bi bi-person-check-fill me-2"></i>Recomendación académica
-                        </h6>
-
-                        <div class="mb-2">
-                            <strong>{{ registro.profesor }}</strong>
+                        <div class="col-md-6">
+                            <small class="text-muted">Carrera</small>
+                            <div>{{ registro.carrera }}</div>
                         </div>
 
-                        <div class="mb-2">
-                            <i class="bi bi-envelope me-2 text-secondary"></i>
-                            <a href="mailto:{{ registro.mailprofesor }}" class="text-decoration-none">
-                                {{ registro.mailprofesor }}
-                            </a>
+                        <div class="col-md-6">
+                            <small class="text-muted">Programa</small>
+                            <div>{{ registro.programa }}</div>
                         </div>
 
-                        <div>
-                            <i class="bi bi-building me-2 text-secondary"></i>
-                            {{ registro.univprofesor|title }}
+                        <div class="col-md-4">
+                            <small class="text-muted">Semestre/Cuatrimestre</small><br>
+                            <span class="badge bg-secondary">{{ registro.semestre }}</span>
                         </div>
-                        </p>
-                        <p class="card-text">
-                            {% if registro.cartaName != null %}
-                                <a href="{{ vich_uploader_asset(registro, 'cartaFile') }}"  target="_blank" > <span class="badge rounded-pill bg-primary"><i class="fa-regular fa-file-pdf"></i> Carta de recomendación</span></a>
-                            {% endif %}
-                            {% if registro.recomendacion != null %}
-                                <p class="card-text">{{ registro.recomendacion | nl2br }} </p>
-                            {% elseif registro.cartaName == "" and registro.recomendacion == "" %}
-                                <span class="badge rounded-pill bg-warning text-dark">Sin recomendación</span>
-                            {% endif %}
-                        </p>
+
+                        <div class="col-md-4">
+                            <small class="text-muted">Avance del programa</small><br>
+                            <span class="badge bg-primary">{{ registro.porcentaje }}%</span>
+                        </div>
+
+                        <div class="col-md-4">
+                            <small class="text-muted">Avance de tesis</small><br>
+                            <span class="badge bg-info text-dark">{{ registro.porcentajetesis }}%</span>
+                        </div>
+
+                        <div class="col-md-4">
+                            <small class="text-muted">Promedio</small><br>
+                            <span class="badge bg-success">{{ registro.promedio }}</span>
+                        </div>
 
                     </div>
+
+                    <hr>
+
+                    <h6 class="text-muted mb-3">
+                        <i class="bi bi-file-earmark-pdf-fill me-2"></i>
+                        Documentación
+                    </h6>
+
+                    {% if registro.caliName %}
+                        <a href="{{ vich_uploader_asset(registro, 'caliFile') }}"
+                           target="_blank"
+                           class="btn btn-outline-primary btn-sm me-2 mb-2">
+                            <i class="fa-regular fa-file-pdf"></i>
+                            Memorándum / Constancia
+                        </a>
+                    {% else %}
+                        <span class="badge bg-warning text-dark">
+                    Sin memorándum o constancia
+                </span>
+                    {% endif %}
+
+                    {% if registro.cartaName %}
+                        <a href="{{ vich_uploader_asset(registro, 'cartaFile') }}"
+                           target="_blank"
+                           class="btn btn-outline-primary btn-sm mb-2">
+                            <i class="fa-regular fa-file-pdf"></i>
+                            Carta de recomendación
+                        </a>
+                    {% endif %}
+
+                    <hr>
+
+                    <h6 class="text-muted mb-3">
+                        <i class="bi bi-person-check-fill me-2"></i>
+                        Profesor que recomienda
+                    </h6>
+
+                    <ul class="list-group list-group-flush mb-3">
+
+                        <li class="list-group-item">
+                            <strong>{{ registro.profesor }}</strong>
+                        </li>
+
+                        <li class="list-group-item">
+                            <i class="bi bi-envelope me-2"></i>
+
+                            <a href="mailto:{{ registro.mailprofesor }}">
+                                {{ registro.mailprofesor }}
+                            </a>
+                        </li>
+
+                        <li class="list-group-item">
+                            <i class="bi bi-building me-2"></i>
+                            {{ registro.univprofesor|title }}
+                        </li>
+
+                    </ul>
+
+                    {% if registro.recomendacion %}
+                        <div class="alert alert-light border">
+                            <h6 class="mb-2">
+                                <i class="bi bi-chat-left-quote"></i>
+                                Recomendación
+                            </h6>
+
+                            {{ registro.recomendacion|nl2br }}
+                        </div>
+
+                    {% elseif not registro.cartaName %}
+
+                        <div class="alert alert-warning mb-0">
+                            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                            No se adjuntó carta ni texto de recomendación.
+                        </div>
+
+                    {% endif %}
+
                 </div>
+
             </div>
+        </div>
             <div class="col-8">
                 <div class="card border-dark mt-3" style="max-width: 100%">
                     <div class="card-header">{{ evento }}</div>

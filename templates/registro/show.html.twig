@@ -77,20 +77,8 @@
                         </div>
                         </p>
                         <p class="card-text">
-                        <dl class="row mb-0">
-                            <dt class="col-sm-4">Profesor</dt>
-                            <dd class="col-sm-8">{{ registro.profesor }}</dd>
-
-                            <dt class="col-sm-4">Correo</dt>
-                            <dd class="col-sm-8">
-                                <a href="mailto:{{ registro.mailprofesor }}">
-                                    {{ registro.mailprofesor }}
-                                </a>
-                            </dd>
-
-                            <dt class="col-sm-4">Institución</dt>
-                            <dd class="col-sm-8">{{ registro.univprofesor|title }}</dd>
-                        </dl>
+                            Recomendado por <strong>{{ registro.profesor }}</strong>, <small><em>{{ registro.mailprofesor }}</em></small><br>
+                            {{ registro.univprofesor| title }}
                         </p>
                         <p class="card-text">
                             {% if registro.cartaName != null %}

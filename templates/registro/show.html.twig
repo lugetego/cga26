@@ -42,39 +42,39 @@
                     <div class="card-body text-dark">
                         <h5 class="card-title">{{ registro.procedencia }} </h5>
                         <p class="card-text">
-                        <ul class="list-group list-group-flush">
+                        <div class="row g-2 small">
 
-                            <li class="list-group-item">
-                                <i class="bi bi-mortarboard-fill me-2"></i>
-                                <strong>Carrera:</strong> {{ registro.carrera }}
-                            </li>
+                            <div class="col-md-6">
+                                <strong>Carrera:</strong><br>
+                                {{ registro.carrera }}
+                            </div>
 
-                            <li class="list-group-item">
-                                <i class="bi bi-book-fill me-2"></i>
-                                <strong>Programa:</strong> {{ registro.programa }}
-                            </li>
+                            <div class="col-md-6">
+                                <strong>Programa:</strong><br>
+                                {{ registro.programa }}
+                            </div>
 
-                            <li class="list-group-item">
-                                <i class="bi bi-calendar3 me-2"></i>
-                                <strong>Semestre/Cuatrimestre:</strong> {{ registro.semestre }}
-                            </li>
+                            <div class="col-md-4">
+                                <strong>Semestre/Cuatrimestre</strong><br>
+                                <span class="badge bg-secondary">{{ registro.semestre }}</span>
+                            </div>
 
-                            <li class="list-group-item d-flex justify-content-between">
-                                <span>Avance del programa</span>
-                                <span class="badge bg-primary rounded-pill">{{ registro.porcentaje }}%</span>
-                            </li>
+                            <div class="col-md-4">
+                                <strong>Avance del programa</strong><br>
+                                <span class="badge bg-primary">{{ registro.porcentaje }} %</span>
+                            </div>
 
-                            <li class="list-group-item d-flex justify-content-between">
-                                <span>Avance de tesis</span>
-                                <span class="badge bg-info text-dark rounded-pill">{{ registro.porcentajetesis }}%</span>
-                            </li>
+                            <div class="col-md-4">
+                                <strong>Avance de tesis</strong><br>
+                                <span class="badge bg-info text-dark">{{ registro.porcentajetesis }} %</span>
+                            </div>
 
-                            <li class="list-group-item d-flex justify-content-between">
-                                <span>Promedio</span>
-                                <span class="badge bg-success rounded-pill">{{ registro.promedio }}</span>
-                            </li>
+                            <div class="col-md-4">
+                                <strong>Promedio</strong><br>
+                                <span class="badge bg-success">{{ registro.promedio }}</span>
+                            </div>
 
-                        </ul>
+                        </div>
                         </p>
                         <p class="card-text">
                             Recomendado por <strong>{{ registro.profesor }}</strong>, <small><em>{{ registro.mailprofesor }}</em></small><br>

@@ -140,19 +140,14 @@
         </div>
          <div class="col col-md-4 col-sm-12  ">
             {{ form_row(form.telefono, {
-    label: 'Número de teléfono',
-    attr: {
-        placeholder: 'Número de teléfono',
-        pattern: '[0-9]{10}',
-        maxlength: '10',
-        minlength: '10',
-        inputmode: 'numeric',
-        title: 'Ingrese un número de teléfono de 10 dígitos'
-    },
-    row_attr: {
-        class: 'form-floating'
-    }
-}) }}
+                label: 'Número de teléfono a 10 dígitos',
+                attr: {
+                    placeholder: 'Número de teléfono'
+                },
+                row_attr: {
+                    class: 'form-floating'
+                }
+            }) }}
         </div>
     </div>
     <div class="row pt-2">
@@ -170,7 +165,7 @@
         </div>
          <div class="col col-md-4 col-sm-12">
             {{ form_row(form.contactotel, {
-                label: 'Número de teléfono del contacto de emergencia',
+                label: 'Número de teléfono a 10 dígitos del contacto de emergencia',
                 attr: {
                     placeholder: 'Número de teléfono del contacto de emergencia'
                 },

@@ -152,8 +152,10 @@ class RegistroController extends AbstractController
         $form->remove('beca');
         $form->remove('aceptado');
         $form->remove('razones');
-        $form->remove('curso1');
-        $form->remove('curso2');
+        $form->remove('contacto');
+        $form->remove('contactotelefono');
+        $form->remove('porcentajetesis');
+        $form->remove('programa');
         $form->remove('caliFile');
         $form->remove('credencialFile');
 
